@@ -31,9 +31,13 @@ A modular, containerized web platform for automated fluorescence microscopy imag
 
 ### Step 1 — Install Docker Desktop
 
-Download and install **[Docker Desktop](https://www.docker.com/products/docker-desktop)** for your OS.
+Download and install **[Docker Desktop](https://www.docker.com/products/docker-desktop)** for your OS.*
 
-> 🆘 First time installing Docker? See the **[Docker Installation Guide](deploy/INSTALL.md)**
+> 🆘 First time installing Docker?
+
+> - 🇬🇧 [Installation Guide (English)](deploy/INSTALL_EN.md)
+
+> - 🇫🇷 [Guide d'installation (Français)](deploy/INSTALL_FR.md)
 
 ### Step 2 — Download the 3 launcher files
 
