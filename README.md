@@ -33,6 +33,8 @@ A modular, containerized web platform for automated fluorescence microscopy imag
 
 Download and install **[Docker Desktop](https://www.docker.com/products/docker-desktop)** for your OS.
 
+> 🆘 First time installing Docker? See the **[Docker Installation Guide](deploy/INSTALL.md)**
+
 ### Step 2 — Download the 3 launcher files
 
 Download only these 3 files from the [`deploy/`](https://github.com/Millimono/CelluleAnalyse/tree/main/deploy) folder:
