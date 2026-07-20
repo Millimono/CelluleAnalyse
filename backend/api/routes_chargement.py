@@ -10,14 +10,19 @@ IMAGES_ROOT_WIN = os.environ.get("IMAGES_ROOT", "")
 IMAGES_ROOT_DOCKER = "/data/images"
 
 def convertir_chemin(chemin: str) -> str:
-    """
-    Convertit un chemin Windows en chemin Docker si nécessaire.
-    Ex: C:\MonLabo\Images\WT → /data/images/WT
-    """
-    if IMAGES_ROOT_WIN and chemin.startswith(IMAGES_ROOT_WIN):
+    # Lire la variable à chaque requête (pas au démarrage)
+    IMAGES_ROOT_WIN = os.environ.get("IMAGES_ROOT", "")
+    IMAGES_ROOT_DOCKER = "/data/images"
+    
+    if not IMAGES_ROOT_WIN:
+        return chemin
+    
+    if chemin.startswith(IMAGES_ROOT_WIN):
         sous_dossier = chemin[len(IMAGES_ROOT_WIN):].replace("\\", "/").lstrip("/")
         return f"{IMAGES_ROOT_DOCKER}/{sous_dossier}"
+    
     return chemin
+
 
 class DossierRequest(BaseModel):
     chemin: str

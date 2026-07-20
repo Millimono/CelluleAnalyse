@@ -16,10 +16,30 @@ read -p "Chemin de votre dossier d'images (ex: /Users/MonNom/Images): " IMAGES_R
 
 export IMAGES_ROOT="$IMAGES_ROOT"
 
+# Construire le chemin Docker selon l'OS
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # Mac → Docker Desktop expose sous /host_mnt/
+    DOCKER_PATH="/host_mnt${IMAGES_ROOT}"
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    # Linux → chemin direct
+    DOCKER_PATH="$IMAGES_ROOT"
+else
+    DOCKER_PATH="$IMAGES_ROOT"
+fi
+
+export DOCKER_PATH="$DOCKER_PATH"
+
+# Ecrire dans .env
+echo "IMAGES_ROOT=$IMAGES_ROOT" > .env
+echo "DOCKER_PATH=$DOCKER_PATH" >> .env
+
 echo ""
+echo "Chemin images  : $IMAGES_ROOT"
+echo "Chemin Docker  : $DOCKER_PATH"
 echo "Lancement en cours..."
 echo ""
 
+docker-compose down
 docker-compose up -d
 
 sleep 5
@@ -34,7 +54,7 @@ fi
 echo ""
 echo "========================================"
 echo " Application lancee sur http://localhost"
-echo " Dans l'app, entrez vos chemins normalement"
+echo " Dans l'app, entrez vos chemins :"
 echo " Ex: $IMAGES_ROOT/WT"
 echo "     $IMAGES_ROOT/KO"
 echo "========================================"
