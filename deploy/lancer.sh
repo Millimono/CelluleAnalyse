@@ -37,6 +37,22 @@ echo "Chemin Docker  : $DOCKER_PATH"
 echo "Lancement en cours..."
 echo ""
 
+# Vérifier si Docker est démarré
+echo "Vérification de Docker Desktop..."
+if ! docker info > /dev/null 2>&1; then
+    echo ""
+    echo "========================================"
+    echo " ERREUR : Docker Desktop n'est pas demarre !"
+    echo " Veuillez :"
+    echo " 1. Ouvrir Docker Desktop"
+    echo " 2. Attendre que l'icone soit stable"
+    echo " 3. Relancer ce script"
+    echo "========================================"
+    exit 1
+fi
+echo "Docker Desktop est actif."
+echo ""
+
 docker-compose -f docker-compose.yml down
 docker-compose -f docker-compose.yml pull
 docker-compose -f docker-compose.yml up -d
