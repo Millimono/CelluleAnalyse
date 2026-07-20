@@ -25,78 +25,94 @@ A modular, containerized web platform for automated fluorescence microscopy imag
 
 ---
 
+## 🚀 Quick Start — For End Users (No coding required)
+
+> ⚠️ **Only Docker Desktop is required — no Python, no Node.js, no source code needed.**
+
+### Step 1 — Install Docker Desktop
+
+Download and install **[Docker Desktop](https://www.docker.com/products/docker-desktop)** for your OS.
+
+### Step 2 — Download the 3 launcher files
+
+Download only these 3 files from the [`deploy/`](https://github.com/Millimono/CelluleAnalyse/tree/main/deploy) folder:
+
+| File | For |
+|------|-----|
+| [`docker-compose.yml`](https://github.com/Millimono/CelluleAnalyse/blob/main/deploy/docker-compose.yml) | All OS |
+| [`lancer.bat`](https://github.com/Millimono/CelluleAnalyse/blob/main/deploy/lancer.bat) | Windows only |
+| [`lancer.sh`](https://github.com/Millimono/CelluleAnalyse/blob/main/deploy/lancer.sh) | Mac / Linux only |
+
+Put all 3 files in the **same folder**.
+
+### Step 3 — Organize your images
+
+Your images must be organized in subfolders like this:
+
+```
+MyImagesFolder/
+    WT/
+        image1.nd2
+        image2.nd2
+    MAP6_KO/
+        image1.nd2
+        image2.nd2
+```
+
+> The subfolder names can be anything — WT, KO, Control, Treatment, etc.
+
+### Step 4 — Launch the app
+
+**Windows:**
+```
+Double-click lancer.bat
+```
+Enter the path to your images folder when prompted (e.g. `E:\MyLab\Images`).
+
+**Mac / Linux:**
+```bash
+chmod +x lancer.sh
+./lancer.sh
+```
+Enter the path to your images folder when prompted (e.g. `/Users/marie/Images`).
+
+The app will:
+1. Download the Docker images automatically (~500MB, first launch only)
+2. Start the application
+3. Open **http://localhost** in your browser
+
+### Step 5 — Use the app
+
+1. Click **"Load WT folder"** → enter the full path to your first group (e.g. `E:\MyLab\Images\WT`)
+2. Click **"Load KO folder"** → enter the full path to your second group
+3. Click on any file to visualize it
+4. Navigate channels and Z-planes
+5. Launch analysis from the **Analysis panel**
+
+---
+
+## 🐳 Docker Hub Images
+
+The application is available as pre-built Docker images:
+
+| Image | Link |
+|-------|------|
+| Backend (FastAPI) | [`smill/celluleanalyse-backend:v0.1.0`](https://hub.docker.com/r/smill/celluleanalyse-backend) |
+| Frontend (React/Nginx) | [`smill/celluleanalyse-frontend:v0.1.0`](https://hub.docker.com/r/smill/celluleanalyse-frontend) |
+
+Pull manually if needed:
+```bash
+docker pull smill/celluleanalyse-backend:v0.1.0
+docker pull smill/celluleanalyse-frontend:v0.1.0
+```
+
+---
+
 ## 📸 Screenshots
 
 > Dashboard with image viewer, pipeline status, and analysis configuration
 
 ![Dashboard](docs/images/dashboard.png)
-
----
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- [Docker Desktop](https://www.docker.com/products/docker-desktop) installed
-- `.nd2` image files organized in subfolders:
-
-```
-YourImagesFolder/
-    GroupA/          ← e.g. WT (wild-type)
-        image1.nd2
-        image2.nd2
-    GroupB/          ← e.g. MAP6_KO
-        image1.nd2
-        image2.nd2
-```
-
-### Windows
-
-```batch
-double-click lancer.bat
-```
-
-Enter the path to your images folder when prompted. The app opens automatically at **http://localhost**.
-
-### Mac / Linux
-
-```bash
-chmod +x lancer.sh
-./lancer.sh
-```
-
-Enter the path to your images folder when prompted. Open **http://localhost** in your browser.
-
----
-
-## 🖥️ Usage
-
-### 1. Load your image groups
-
-Click **"Load WT folder"** and enter the full path to your first group.  
-Click **"Load KO folder"** and enter the full path to your second group.
-
-### 2. Explore images
-
-Select any file from the sidebar to visualize it in the viewer:
-- Switch between **ADN**, **Acetylation**, **Polyglutamylation**, and **Composite** channels
-- Navigate Z-planes with the slider or ‹ › buttons
-- Open any image **full screen** for detailed inspection
-- Images are progressively cached — navigation becomes instantaneous
-
-### 3. Configure and run analysis
-
-In the **Analysis panel**:
-- Choose scope: current file or entire group
-- Select analyses: cell counting, fluorescence intensity measurement
-- Choose detection method: Otsu thresholding, Cellpose (ML), StarDist (DL)
-- Click **Launch analysis**
-
-### 4. View results
-
-- Detection overlay appears directly on the image (🔬 Analysis mode toggle)
-- Metrics update in the dashboard: total cells, mitoses, % mitosis
-- Pipeline status tracks each completed step
 
 ---
 
@@ -114,7 +130,7 @@ CelluleAnalyse/
 │   │   ├── chargement/
 │   │   │   ├── loader_nd2.py         # Nikon .nd2 reader
 │   │   │   ├── loader_czi.py         # Zeiss .czi reader (coming soon)
-│   │   │   └── projection_z.py       # 3D → 2D Z-projection (max/mean/sum)
+│   │   │   └── projection_z.py       # 3D to 2D Z-projection (max/mean/sum)
 │   │   ├── detection_noyaux/
 │   │   │   ├── base_detector.py      # Abstract detector interface
 │   │   │   ├── detector_threshold.py # Otsu thresholding + watershed
@@ -152,12 +168,15 @@ CelluleAnalyse/
 │       ├── context/                  # Global app state (AppContext)
 │       └── styles/                   # CSS variables (light/dark theme)
 │
+├── deploy/                           # End-user distribution files
+│   ├── docker-compose.yml            # Production docker-compose
+│   ├── lancer.bat                    # Windows launcher
+│   └── lancer.sh                     # Mac/Linux launcher
+│
 ├── Dockerfile.backend
 ├── Dockerfile.frontend
-├── docker-compose.yml
+├── docker-compose.yml                # Development docker-compose
 ├── nginx.conf
-├── lancer.bat                        # Windows launcher
-├── lancer.sh                         # Mac/Linux launcher
 └── README.md
 ```
 
@@ -191,38 +210,6 @@ CelluleAnalyse/
 
 ---
 
-## 🐳 Docker
-
-### Build images
-
-```bash
-docker-compose build
-```
-
-### Run with launcher (recommended)
-
-```batch
-# Windows
-lancer.bat
-
-# Mac/Linux
-./lancer.sh
-```
-
-### Run manually
-
-```bash
-IMAGES_ROOT=/path/to/your/images docker-compose up
-```
-
-### Stop
-
-```bash
-docker-compose down
-```
-
----
-
 ## 💻 Local Development
 
 ### Backend
@@ -231,8 +218,8 @@ docker-compose down
 cd backend
 pip install -r requirements.txt
 python -m uvicorn main:app --reload
-# → http://localhost:8000
-# → http://localhost:8000/docs (Swagger UI)
+# http://localhost:8000
+# http://localhost:8000/docs (Swagger UI)
 ```
 
 ### Frontend
@@ -241,7 +228,14 @@ python -m uvicorn main:app --reload
 cd frontend
 npm install
 npm run dev
-# → http://localhost:5173
+# http://localhost:5173
+```
+
+### Build Docker images locally
+
+```bash
+docker-compose build
+docker-compose up -d
 ```
 
 ---
@@ -308,11 +302,11 @@ This platform was developed for the analysis of fluorescence microscopy images c
 
 ## 👤 Author
 
-**Sory Millimono** — Bioinformatician · AI Researcher  
+**Sory Millimono** — Bioinformatician · AI Researcher
 Université de Montréal
 
-📧 millimono64.sm@gmail.com  
-🔗 [LinkedIn](https://linkedin.com/in/millimono)  
+📧 millimono64.sm@gmail.com
+🔗 [LinkedIn](https://linkedin.com/in/millimono)
 🔬 [ORCID](https://orcid.org/0009-0005-1960-9136)
 
 ---
