@@ -297,7 +297,7 @@ This platform was developed for the analysis of fluorescence microscopy images c
 
 ```bibtex
 @software{celluleanalyse2026,
-  author = {Millimono, Sory},
+  author = {Millimono, Sory ; Paim , Lia Gomes},
   title  = {CelluleAnalyse: A modular web platform for automated fluorescence microscopy analysis},
   year   = {2026},
   url    = {https://github.com/Millimono/CelluleAnalyse}
