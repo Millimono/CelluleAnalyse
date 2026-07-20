@@ -64,9 +64,9 @@ echo DOCKER_PATH=%DOCKER_PATH%>> .env
 echo Lancement en cours...
 echo.
 
-docker-compose -f docker-compose.prod.yml down
-docker-compose -f docker-compose.prod.yml pull
-docker-compose -f docker-compose.prod.yml up -d
+docker-compose -f docker-compose.yml down
+docker-compose -f docker-compose.yml pull
+docker-compose -f docker-compose.yml up -d
 
 timeout /t 5 /nobreak > nul
 
