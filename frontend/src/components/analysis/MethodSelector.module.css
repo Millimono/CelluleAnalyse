@@ -1,0 +1,135 @@
+.container {
+  background: var(--surface-2);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sectionLabel {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.scopeList,
+.analyseList {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.scopeOption,
+.analyseOption {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px 12px;
+  background: var(--surface-1);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.scopeOption:hover,
+.analyseOption:hover {
+  background: var(--surface-0);
+}
+
+.scopeActive {
+  background: var(--bg-accent);
+  border-color: var(--border-accent);
+}
+
+.scopeActive .optionTitle {
+  color: var(--text-accent);
+}
+
+.scopeActive .optionDesc {
+  color: var(--text-accent);
+  opacity: 0.8;
+}
+
+.optionTitle {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0 0 2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.optionDesc {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.groupeChecks {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.groupeCheck {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.soon {
+  font-size: 10px;
+  background: var(--surface-0);
+  border: 0.5px solid var(--border);
+  padding: 1px 6px;
+  border-radius: 10px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.methodGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.fieldLabel {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 3px;
+}
+
+.runBtn {
+  width: 100%;
+  padding: 9px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 2px;
+}

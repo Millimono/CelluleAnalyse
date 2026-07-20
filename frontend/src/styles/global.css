@@ -1,0 +1,124 @@
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  background: var(--surface-0);
+  color: var(--text-primary);
+  transition: background var(--transition), color var(--transition);
+}
+
+/* ============================================================
+   LAYOUT PRINCIPAL
+   ============================================================ */
+.app-layout {
+  display: grid;
+  grid-template-rows: var(--header-height) 1fr;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  grid-template-areas:
+    "header header"
+    "sidebar main";
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ============================================================
+   COMPOSANTS DE BASE
+   ============================================================ */
+
+/* Carte */
+.card {
+  background: var(--surface-2);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+}
+
+/* Bouton de base */
+button {
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  border: 0.5px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 6px 14px;
+  background: transparent;
+  color: var(--text-primary);
+  transition: background var(--transition);
+}
+
+button:hover {
+  background: var(--surface-1);
+}
+
+button.primary {
+  background: var(--fill-accent);
+  color: var(--on-accent);
+  border-color: var(--fill-accent);
+}
+
+button.primary:hover {
+  opacity: 0.9;
+}
+
+/* Select */
+select {
+  font-family: inherit;
+  font-size: 12px;
+  padding: 5px 8px;
+  border-radius: var(--radius);
+  border: 0.5px solid var(--border);
+  background: var(--surface-0);
+  color: var(--text-primary);
+  width: 100%;
+  cursor: pointer;
+}
+
+/* Badge */
+.badge {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.badge-accent {
+  background: var(--fill-accent);
+  color: var(--on-accent);
+}
+
+.badge-neutral {
+  background: var(--surface-0);
+  color: var(--text-secondary);
+  border: 0.5px solid var(--border);
+}
+
+/* Label section */
+.section-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 3px;
+}

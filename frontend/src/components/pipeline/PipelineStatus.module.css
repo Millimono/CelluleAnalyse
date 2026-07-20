@@ -1,0 +1,71 @@
+.container {
+  background: var(--surface-2);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: var(--radius);
+  position: relative;
+}
+
+.icon {
+  font-size: 13px;
+  width: 16px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.stepLabel {
+  font-size: 12px;
+}
+
+/* Statuts */
+.idle .icon,
+.idle .stepLabel {
+  color: var(--text-muted);
+}
+
+.running {
+  background: var(--bg-accent);
+}
+.running .icon,
+.running .stepLabel {
+  color: var(--text-accent);
+}
+
+.done {
+  background: var(--bg-success);
+}
+.done .icon,
+.done .stepLabel {
+  color: var(--text-success);
+}
+
+.error {
+  background: var(--bg-danger);
+}
+.error .icon,
+.error .stepLabel {
+  color: var(--text-danger);
+}

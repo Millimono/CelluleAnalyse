@@ -1,0 +1,128 @@
+.container {
+  background: var(--surface-2);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+
+.group {
+  margin-bottom: 4px;
+}
+
+.groupHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 10px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  border: 0.5px solid transparent;
+  transition: background var(--transition);
+}
+
+.groupHeader:hover {
+  background: var(--surface-1);
+}
+
+.groupHeader.active {
+  background: var(--bg-accent);
+  border-color: var(--border-accent);
+}
+
+.groupLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.active .groupLeft {
+  color: var(--text-accent);
+}
+
+.badge {
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.badgeActive {
+  background: var(--fill-accent);
+  color: var(--on-accent);
+}
+
+.badgeNeutral {
+  background: var(--surface-0);
+  color: var(--text-secondary);
+  border: 0.5px solid var(--border);
+}
+
+.fileList {
+  margin: 4px 0 4px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.empty {
+  font-size: 12px;
+  color: var(--text-muted);
+  padding: 6px 8px;
+  font-style: italic;
+}
+
+.fileItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--text-secondary);
+  transition: background var(--transition);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fileItem:hover {
+  background: var(--surface-1);
+  color: var(--text-primary);
+}
+
+.fileActive {
+  background: var(--bg-accent);
+  color: var(--text-accent);
+}
+
+.loadBtn {
+  width: 100%;
+  margin-top: 10px;
+  font-size: 12px;
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  border-style: dashed;
+}
+
+.loadBtn:hover {
+  color: var(--text-accent);
+  border-color: var(--border-accent);
+  background: var(--bg-accent);
+}

@@ -1,0 +1,149 @@
+.container {
+  background: var(--surface-2);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
+  flex-shrink: 0;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.canvas {
+  background: #000;
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius);
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-size: 13px;
+}
+
+.overlayFast {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 11px;
+  color: #fff;
+  background: rgba(0,0,0,0.5);
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error {
+  font-size: 13px;
+  color: var(--text-danger);
+  text-align: center;
+  padding: 1rem;
+}
+
+.empty {
+  text-align: center;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.empty p {
+  font-size: 13px;
+}
+
+.fullscreenBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  padding: 4px 10px;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.fullscreenBtn:hover {
+  color: var(--text-accent);
+  border-color: var(--border-accent);
+}
+
+.preloadBar {
+  position: relative;
+  height: 4px;
+  background: var(--surface-0);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.preloadFill {
+  height: 100%;
+  background: var(--fill-accent);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.preloadLabel {
+  position: absolute;
+  right: 0;
+  top: 6px;
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.preloadDone {
+  font-size: 11px;
+  color: var(--text-success);
+  text-align: center;
+  padding: 2px 0;
+}

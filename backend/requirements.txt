@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+nd2
+numpy
+matplotlib
+scikit-image
+scipy
+seaborn
+pandas
+Pillow
+python-multipart
