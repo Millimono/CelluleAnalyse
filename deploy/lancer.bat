@@ -64,6 +64,24 @@ echo DOCKER_PATH=%DOCKER_PATH%>> .env
 echo Lancement en cours...
 echo.
 
+:: Vérifier si Docker est démarré
+echo Vérification de Docker Desktop...
+docker info >nul 2>&1
+if errorlevel 1 (
+    echo.
+    echo ========================================
+    echo  ERREUR : Docker Desktop n'est pas demarre !
+    echo  Veuillez :
+    echo  1. Ouvrir Docker Desktop
+    echo  2. Attendre que l'icone soit stable
+    echo  3. Relancer ce script
+    echo ========================================
+    pause
+    exit /b 1
+)
+echo Docker Desktop est actif.
+echo.
+
 docker-compose -f docker-compose.yml down
 docker-compose -f docker-compose.yml pull
 docker-compose -f docker-compose.yml up -d
