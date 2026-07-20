@@ -311,6 +311,10 @@ This platform was developed for the analysis of fluorescence microscopy images c
 **Sory Millimono** — Bioinformatician · AI Researcher
 Université de Montréal
 
+**Lia Gomes Paim** — Professeure adjointe
+Faculté de médecine vétérinaire - Département de biomédecine
+HY 3200Sicotte 2980
+
 📧 millimono64.sm@gmail.com
 🔗 [LinkedIn](https://linkedin.com/in/millimono)
 🔬 [ORCID](https://orcid.org/0009-0005-1960-9136)
