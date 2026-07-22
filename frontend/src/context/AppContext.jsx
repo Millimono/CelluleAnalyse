@@ -50,9 +50,10 @@ export function AppProvider({ children }) {
 
   // ── Métriques ────────────────────────────────────────────
   const [metrics, setMetrics] = useState({
-    totalCells: null,
-    mitosis: null,
-    mitosisPct: null,
+    totalCells:    null,
+    mitosis:       null,
+    inconnu:       null,
+    mitosisPct:    null,
     filesAnalyzed: null,
   });
 

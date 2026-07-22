@@ -1,5 +1,35 @@
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+.instructions {
+  display: flex;
   gap: 10px;
+  align-items: center;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  background: var(--surface-1);
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  flex: 1;
+}
+
+.step strong {
+  color: var(--text-accent);
+}
+
+.num {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--fill-accent);
+  color: var(--on-accent);
+  font-size: 11px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }

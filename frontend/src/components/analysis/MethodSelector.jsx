@@ -57,6 +57,7 @@ export default function MethodSelector({ onResultat }) {
         setMetrics({
           totalCells:    resultat.total,
           mitosis:       resultat.mitose,
+          inconnu:       resultat.inconnu,
           mitosisPct:    resultat.total > 0
             ? Math.round((resultat.mitose / resultat.total) * 100)
             : 0,

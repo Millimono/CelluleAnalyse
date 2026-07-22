@@ -3,13 +3,16 @@ import MetricsGrid from "../metrics/MetricsGrid";
 import ImageViewer from "../viewer/ImageViewer";
 import FileList from "../files/FileList";
 import MethodSelector from "../analysis/MethodSelector";
+import ResultatsAnalyse from "../results/ResultatsAnalyse";
 import styles from "./MainContent.module.css";
 
 export default function MainContent() {
   const [imageAnalyse, setImageAnalyse] = useState(null);
+  const [resultats,    setResultats]    = useState(null);
 
   const handleResultat = (resultat) => {
     setImageAnalyse(resultat.image_b64);
+    setResultats(resultat);
   };
 
   return (
@@ -20,6 +23,7 @@ export default function MainContent() {
         <FileList />
         <MethodSelector onResultat={handleResultat} />
       </div>
+      {resultats && <ResultatsAnalyse resultats={resultats} />}
     </main>
   );
 }

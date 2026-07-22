@@ -1,17 +1,24 @@
-import { useApp } from "../../context/AppContext";
-import MetricCard from "./MetricCard";
 import styles from "./MetricsGrid.module.css";
 
 export default function MetricsGrid() {
-  const { metrics, groups, activeGroup } = useApp();
-  const totalFiles = groups[activeGroup]?.files.length ?? 0;
-
   return (
-    <div className={styles.grid}>
-      <MetricCard label="Cellules totales"  value={metrics.totalCells}    />
-      <MetricCard label="En mitose"         value={metrics.mitosis}        />
-      <MetricCard label="% mitose"          value={metrics.mitosisPct} unit="%" />
-      <MetricCard label="Fichiers analysés" value={metrics.filesAnalyzed !== null ? `${metrics.filesAnalyzed}/${totalFiles}` : null} />
+    <div className={styles.instructions}>
+      <p className={styles.step}>
+        <span className={styles.num}>1</span>
+        Chargez vos dossiers <strong>WT</strong> et <strong>KO</strong> depuis la sidebar
+      </p>
+      <p className={styles.step}>
+        <span className={styles.num}>2</span>
+        Sélectionnez un fichier pour le visualiser
+      </p>
+      <p className={styles.step}>
+        <span className={styles.num}>3</span>
+        Configurez et lancez l'analyse
+      </p>
+      <p className={styles.step}>
+        <span className={styles.num}>4</span>
+        Consultez les résultats ci-dessous
+      </p>
     </div>
   );
 }

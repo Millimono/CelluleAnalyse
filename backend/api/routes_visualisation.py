@@ -39,14 +39,23 @@ def normaliser_canal(arr: np.ndarray) -> np.ndarray:
 
 def extraire_rgb(plan: np.ndarray, canal: str, n_canaux: int, h: int, w: int) -> np.ndarray:
     rgb = np.zeros((h, w, 3), dtype=np.uint8)
+
     if canal == "adn":
+        # Canal ADN → bleu
         rgb[:,:,2] = normaliser_canal(plan[min(2, n_canaux-1)])
+
     elif canal == "acetylation":
+        # Canal acétylation → vert
         rgb[:,:,1] = normaliser_canal(plan[min(1, n_canaux-1)])
+
     elif canal == "polyglutamylation":
+        # Canal polyglutamylation → magenta (rouge + bleu)
         a = normaliser_canal(plan[0])
-        rgb[:,:,0] = a; rgb[:,:,2] = a
+        rgb[:,:,0] = a
+        rgb[:,:,2] = a
+
     elif canal == "composite":
+        # Fusion des 3 canaux
         if n_canaux >= 1:
             a = normaliser_canal(plan[0])
             rgb[:,:,0] = np.maximum(rgb[:,:,0], a)
@@ -57,6 +66,14 @@ def extraire_rgb(plan: np.ndarray, canal: str, n_canaux: int, h: int, w: int) ->
         if n_canaux >= 3:
             a = normaliser_canal(plan[2])
             rgb[:,:,2] = np.maximum(rgb[:,:,2], a)
+
+    elif canal == "adn_acetylation":
+        # ADN (bleu) + Acétylation (vert) → meilleure identification mitose
+        arr_adn  = normaliser_canal(plan[min(2, n_canaux-1)])
+        arr_acet = normaliser_canal(plan[min(1, n_canaux-1)])
+        rgb[:,:,1] = arr_acet  # vert = acétylation
+        rgb[:,:,2] = arr_adn   # bleu = ADN
+
     return rgb
 
 def array_vers_b64(arr: np.ndarray) -> str:
