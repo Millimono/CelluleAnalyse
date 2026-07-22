@@ -1,0 +1,18 @@
+services:
+  backend:
+    image: smill/celluleanalyse-backend:v0.2.0
+    ports:
+      - "8000:8000"
+    volumes:
+      - ${DOCKER_PATH:-/tmp}:/data/images
+    environment:
+      - IMAGES_ROOT=${IMAGES_ROOT:-}
+    restart: unless-stopped
+
+  frontend:
+    image: smill/celluleanalyse-frontend:v0.2.0
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
