@@ -2,7 +2,7 @@
 
 A modular, containerized web platform for automated fluorescence microscopy image analysis.
 
-![Version](https://img.shields.io/badge/version-0.1.0-blue)
+![Version](https://img.shields.io/badge/version-0.2.0-blue)
 ![Python](https://img.shields.io/badge/python-3.11-green)
 ![React](https://img.shields.io/badge/react-18-61dafb)
 ![FastAPI](https://img.shields.io/badge/fastapi-0.128-009688)
@@ -19,7 +19,7 @@ A modular, containerized web platform for automated fluorescence microscopy imag
 |---------|-------------|--------|
 | 🔵 Nucleus detection | Automated detection from DAPI/DNA channel | ✅ Stable |
 | 🔬 Cell classification | Interphase vs mitosis classification | ✅ Stable |
-| 📊 Fluorescence measurement | Intensity quantification in mitotic spindles | 🔄 In development |
+| 📊 Fluorescence measurement | Intensity quantification in mitotic spindles | ✅ Stable |
 | 📈 Group comparison | Statistical comparison between two conditions | 🔄 In development |
 | 🧠 ML/DL detection | Cellpose, StarDist integration | 🔄 In development |
 
@@ -45,9 +45,9 @@ Download only these 3 files from the [`deploy/`](https://github.com/Millimono/Ce
 
 | File | For |
 |------|-----|
-| [`docker-compose.yml`](https://github.com/Millimono/CelluleAnalyse/blob/main/deploy/docker-compose.yml) | All OS |
-| [`lancer.bat`](https://github.com/Millimono/CelluleAnalyse/blob/main/deploy/lancer.bat) | Windows only |
-| [`lancer.sh`](https://github.com/Millimono/CelluleAnalyse/blob/main/deploy/lancer.sh) | Mac / Linux only |
+| [`docker-compose.yml`](https://github.com/Millimono/CelluleAnalyse/blob/main/deploy/v0.2.0/docker-compose.yml) | All OS |
+| [`lancer.bat`](https://github.com/Millimono/CelluleAnalyse/blob/main/deploy/v0.2.0/lancer.bat) | Windows only |
+| [`lancer.sh`](https://github.com/Millimono/CelluleAnalyse/blob/main/deploy/v0.2.0/lancer.sh) | Mac / Linux only |
 
 Put all 3 files in the **same folder**.
 
@@ -103,13 +103,13 @@ The application is available as pre-built Docker images:
 
 | Image | Link |
 |-------|------|
-| Backend (FastAPI) | [`smill/celluleanalyse-backend:v0.1.0`](https://hub.docker.com/r/smill/celluleanalyse-backend) |
-| Frontend (React/Nginx) | [`smill/celluleanalyse-frontend:v0.1.0`](https://hub.docker.com/r/smill/celluleanalyse-frontend) |
+| Backend (FastAPI) | [`smill/celluleanalyse-backend:v0.2.0`](https://hub.docker.com/r/smill/celluleanalyse-backend) |
+| Frontend (React/Nginx) | [`smill/celluleanalyse-frontend:v0.2.0`](https://hub.docker.com/r/smill/celluleanalyse-frontend) |
 
 Pull manually if needed:
 ```bash
-docker pull smill/celluleanalyse-backend:v0.1.0
-docker pull smill/celluleanalyse-frontend:v0.1.0
+docker pull smill/celluleanalyse-backend:v0.2.0
+docker pull smill/celluleanalyse-frontend:v0.2.0
 ```
 
 ---
@@ -175,9 +175,14 @@ CelluleAnalyse/
 │       └── styles/                   # CSS variables (light/dark theme)
 │
 ├── deploy/                           # End-user distribution files
-│   ├── docker-compose.yml            # Production docker-compose
-│   ├── lancer.bat                    # Windows launcher
-│   └── lancer.sh                     # Mac/Linux launcher
+│   ├── v0.1.0/                       # Version 0.1.0
+│   │   ├── docker-compose.yml
+│   │   ├── lancer.bat
+│   │   └── lancer.sh
+│   └── v0.2.0/                       # Version 0.2.0 (latest)
+│       ├── docker-compose.yml
+│       ├── lancer.bat
+│       └── lancer.sh
 │
 ├── Dockerfile.backend
 ├── Dockerfile.frontend
